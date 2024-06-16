@@ -11,6 +11,7 @@ class Shop(
     val id: Long? = null,
     val name: String,
     val phone: String,
-    val address: ShopAddress
+    val address: ShopAddress,
+    val bizNum: String
 ) {
 }

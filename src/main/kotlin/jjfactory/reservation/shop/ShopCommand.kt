@@ -4,13 +4,15 @@ class ShopCommand {
     data class Create(
         val name: String,
         val phone: String,
-        val address: ShopAddress
+        val address: ShopAddress,
+        val bizNum: String
     ){
         fun toEntity(): Shop {
             return Shop(
                 name = name,
                 phone = phone,
-                address = address
+                address = address,
+                bizNum = bizNum
             )
         }
     }

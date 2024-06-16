@@ -18,6 +18,7 @@ class ShopService(
     }
 
     fun registerShop(command: ShopCommand.Create): Long {
+        if (shopRepository.existsByBizNum(command.bizNum)) throw IllegalArgumentException("duplicate bizNum")
         val initShop = command.toEntity()
 
         return shopRepository.save(initShop).id!!

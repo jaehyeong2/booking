@@ -2,6 +2,7 @@ package jjfactory.reservation.user
 
 import jakarta.persistence.*
 
+@Table(name = "users")
 @Entity
 class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

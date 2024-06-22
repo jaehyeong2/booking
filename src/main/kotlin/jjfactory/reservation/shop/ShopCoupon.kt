@@ -23,8 +23,6 @@ class ShopCoupon(
     val updatedAt: LocalDateTime? = null,
 
     ) {
-    @ManyToOne(fetch = FetchType.LAZY)
-    lateinit var shop: Shop
 
     enum class Type(name: String) {
         AUTO("자동 발행"),

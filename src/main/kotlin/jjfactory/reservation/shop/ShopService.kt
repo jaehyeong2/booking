@@ -10,15 +10,23 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 @Service
 class ShopService(
+    private val shopReader: ShopReader,
     private val shopRepository: ShopRepository,
     private val shopManagerRepository: ShopManagerRepository,
     private val mailSender: MailSender
 ) {
 
     @Transactional(readOnly = true)
-    fun getById(id: Long): Shop {
-        val shop = shopRepository.findByIdOrNull(id) ?: throw  NotFoundException()
-        return shop
+    fun getDetail(id: Long): ShopDto.Detail {
+        val shop = shopReader.findByIdOrThrow(id)
+
+        return ShopDto.Detail(
+            id = shop.id!!,
+            name = shop.name,
+            phone = shop.phone,
+            address = shop.address,
+            bizNum = shop.bizNum
+        )
     }
 
     fun registerShop(command: ShopCommand.Create): Long {

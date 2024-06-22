@@ -5,6 +5,8 @@ import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.UpdateTimestamp
 import java.time.LocalDateTime
 
+
+@Table(indexes = [Index(name = "shopId", columnList = "shopId")])
 @Entity
 class ShopCoupon(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

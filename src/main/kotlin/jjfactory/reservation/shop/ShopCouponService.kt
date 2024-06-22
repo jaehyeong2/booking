@@ -11,7 +11,6 @@ class ShopCouponService(
     private val shopRepository: ShopRepository,
     private val shopCouponRepository: ShopCouponRepository
 ) {
-
     fun registerCoupon(command: ShopCouponCommand.Create, shopId: Long): Long {
         val initCoupon = command.toEntity(shopId)
 

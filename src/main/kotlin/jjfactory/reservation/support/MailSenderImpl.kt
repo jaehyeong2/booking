@@ -6,6 +6,10 @@ import org.springframework.stereotype.Component
 class MailSenderImpl : MailSender {
 
     override fun sendShopManagerActivateMail(phone: String) {
-        TODO("Not yet implemented")
+        logger().info("sendShopManagerActivateMail called")
+    }
+
+    override fun sendUserActivateMail(phone: String) {
+        logger().info("sendUserActivateMail called")
     }
 }

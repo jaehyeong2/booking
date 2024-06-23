@@ -11,6 +11,8 @@ class User(
     val firstName: String,
     val phone: String,
 
+    var isActive: Boolean = false,
+
     @Enumerated(EnumType.STRING)
     var grade: Grade = Grade.E
 ) {
@@ -21,5 +23,9 @@ class User(
         if (grade.ordinal >= 1) {
             grade = Grade.values()[grade.ordinal-1]
         }
+    }
+
+    fun activate(){
+        isActive = true
     }
 }

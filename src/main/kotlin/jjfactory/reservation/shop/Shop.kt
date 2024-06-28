@@ -4,6 +4,8 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.OneToMany
+import jjfactory.reservation.shop.holiday.Holiday
 
 @Entity
 class Shop(
@@ -14,4 +16,7 @@ class Shop(
     val address: ShopAddress,
     val bizNum: String
 ) {
+
+    @OneToMany(mappedBy = "shop")
+    var holidays: List<Holiday> = listOf()
 }

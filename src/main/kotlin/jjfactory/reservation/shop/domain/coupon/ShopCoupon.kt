@@ -15,12 +15,17 @@ class ShopCoupon(
     val name: String,
 
     @Enumerated(EnumType.STRING)
-    var type: Type,
+    var type: Type = Type.NORMAL,
 
     @CreationTimestamp
     val createdAt: LocalDateTime? = null,
     @UpdateTimestamp
     val updatedAt: LocalDateTime? = null,
+
+    var qty: Int,
+    var issueStarted: Boolean = false,
+
+    var validSecond: Long,
 
     var useStartAt: LocalDateTime,
     var useEndAt: LocalDateTime,
@@ -29,5 +34,13 @@ class ShopCoupon(
     enum class Type(name: String) {
         AUTO("자동 발행"),
         NORMAL("일반")
+    }
+
+    fun issueAvailable(): Boolean {
+        return issueStarted
+    }
+
+    fun startIssue(){
+        issueStarted = true
     }
 }

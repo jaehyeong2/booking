@@ -10,6 +10,8 @@ class ShopCouponCommand {
         val type: ShopCoupon.Type,
         val useStartAt: LocalDateTime,
         val useEndAt: LocalDateTime,
+        val qty: Int,
+        val validSecond: Long
     ){
         fun toEntity(shopId: Long): ShopCoupon {
             return ShopCoupon(
@@ -17,7 +19,9 @@ class ShopCouponCommand {
                 shopId = shopId,
                 type = type,
                 useStartAt = useStartAt,
-                useEndAt = useEndAt
+                useEndAt = useEndAt,
+                qty = qty,
+                validSecond = validSecond
             )
         }
     }

@@ -17,15 +17,19 @@ class User(
     var grade: Grade = Grade.E
 ) {
 
+    fun getFullName(): String {
+        return lastName + firstName
+    }
+
     fun getDiscountRate() = grade.discountRate
 
-    fun upgrade(){
+    fun upgrade() {
         if (grade.ordinal >= 1) {
-            grade = Grade.values()[grade.ordinal-1]
+            grade = Grade.values()[grade.ordinal - 1]
         }
     }
 
-    fun activate(){
+    fun activate() {
         isActive = true
     }
 }

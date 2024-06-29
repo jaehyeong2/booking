@@ -9,6 +9,17 @@ import kotlin.math.E
 class UserTest{
 
     @Test
+    fun getFullName(){
+        val user = User(
+            firstName = "jj",
+            lastName = "lee",
+            phone = "0101234134"
+        )
+
+        assertThat(user.getFullName()).isEqualTo("leejj")
+    }
+
+    @Test
     fun `초기 grade는 E`(){
         val user = User(
             firstName = "jj",

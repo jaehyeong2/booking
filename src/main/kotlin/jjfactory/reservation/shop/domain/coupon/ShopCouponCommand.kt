@@ -1,6 +1,6 @@
-package jjfactory.reservation.shop
+package jjfactory.reservation.shop.domain.coupon
 
-import jjfactory.reservation.shop.manager.ShopManager
+import jjfactory.reservation.shop.domain.ShopAddress
 
 class ShopCouponCommand {
     data class Create(

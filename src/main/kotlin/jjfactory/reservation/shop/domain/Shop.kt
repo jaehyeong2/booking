@@ -1,11 +1,12 @@
-package jjfactory.reservation.shop
+package jjfactory.reservation.shop.domain
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.OneToMany
-import jjfactory.reservation.shop.holiday.Holiday
+import jjfactory.reservation.shop.domain.holiday.Holiday
+import java.time.LocalDate
 
 @Entity
 class Shop(
@@ -18,5 +19,13 @@ class Shop(
 ) {
 
     @OneToMany(mappedBy = "shop")
-    var holidays: List<Holiday> = listOf()
+    val holidays: MutableSet<Holiday> = mutableSetOf()
+
+    @Transient
+    val holidayDates: Set<LocalDate> = holidays.map { it.date }.toSet()
+
+    fun isHoliday(date: LocalDate): Boolean {
+        if (holidayDates.contains(date)) return true
+        return false
+    }
 }

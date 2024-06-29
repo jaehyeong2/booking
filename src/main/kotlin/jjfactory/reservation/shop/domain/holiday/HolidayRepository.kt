@@ -1,4 +1,4 @@
-package jjfactory.reservation.shop.holiday
+package jjfactory.reservation.shop.domain.holiday
 
 import org.springframework.data.jpa.repository.JpaRepository
 

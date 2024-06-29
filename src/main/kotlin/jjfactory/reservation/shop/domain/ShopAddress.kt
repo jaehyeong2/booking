@@ -1,4 +1,4 @@
-package jjfactory.reservation.shop
+package jjfactory.reservation.shop.domain
 
 import jakarta.persistence.Embeddable
 

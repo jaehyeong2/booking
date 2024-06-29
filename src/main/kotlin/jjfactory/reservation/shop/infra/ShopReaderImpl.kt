@@ -1,5 +1,8 @@
-package jjfactory.reservation.shop
+package jjfactory.reservation.shop.infra
 
+import jjfactory.reservation.shop.domain.Shop
+import jjfactory.reservation.shop.domain.ShopReader
+import jjfactory.reservation.shop.infra.ShopRepository
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component

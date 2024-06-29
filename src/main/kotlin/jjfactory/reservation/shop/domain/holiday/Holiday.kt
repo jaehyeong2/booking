@@ -1,7 +1,7 @@
-package jjfactory.reservation.shop.holiday
+package jjfactory.reservation.shop.domain.holiday
 
 import jakarta.persistence.*
-import jjfactory.reservation.shop.Shop
+import jjfactory.reservation.shop.domain.Shop
 import java.time.LocalDate
 
 @Table(

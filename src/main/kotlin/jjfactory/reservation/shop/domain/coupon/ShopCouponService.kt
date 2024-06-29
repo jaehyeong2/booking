@@ -1,5 +1,7 @@
-package jjfactory.reservation.shop
+package jjfactory.reservation.shop.domain.coupon
 
+import jjfactory.reservation.shop.infra.ShopCouponRepository
+import jjfactory.reservation.shop.infra.ShopRepository
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service

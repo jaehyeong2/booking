@@ -1,9 +1,12 @@
-package jjfactory.reservation.shop
+package jjfactory.reservation.shop.application
 
-import jjfactory.reservation.shop.holiday.Holiday
-import jjfactory.reservation.shop.holiday.HolidayRepository
+import jjfactory.reservation.shop.domain.ShopCommand
+import jjfactory.reservation.shop.presentation.ShopDto
+import jjfactory.reservation.shop.domain.ShopReader
+import jjfactory.reservation.shop.domain.holiday.Holiday
+import jjfactory.reservation.shop.domain.holiday.HolidayRepository
 import jjfactory.reservation.shop.infra.ShopRepository
-import jjfactory.reservation.shop.manager.ShopManagerRepository
+import jjfactory.reservation.shop.domain.manager.ShopManagerRepository
 import jjfactory.reservation.support.MailSender
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.stereotype.Service

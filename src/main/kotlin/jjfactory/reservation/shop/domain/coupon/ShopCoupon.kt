@@ -1,4 +1,4 @@
-package jjfactory.reservation.shop
+package jjfactory.reservation.shop.domain.coupon
 
 import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp

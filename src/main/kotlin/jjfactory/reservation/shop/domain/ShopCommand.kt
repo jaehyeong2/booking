@@ -1,6 +1,6 @@
-package jjfactory.reservation.shop
+package jjfactory.reservation.shop.domain
 
-import jjfactory.reservation.shop.manager.ShopManager
+import jjfactory.reservation.shop.domain.manager.ShopManager
 
 class ShopCommand {
     data class Create(

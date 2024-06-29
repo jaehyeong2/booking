@@ -1,4 +1,6 @@
-package jjfactory.reservation.shop
+package jjfactory.reservation.shop.presentation
+
+import jjfactory.reservation.shop.domain.ShopAddress
 
 class ShopDto {
     data class Detail(

@@ -22,6 +22,8 @@ class ShopCoupon(
     @UpdateTimestamp
     val updatedAt: LocalDateTime? = null,
 
+    var useStartAt: LocalDateTime,
+    var useEndAt: LocalDateTime,
     ) {
 
     enum class Type(name: String) {

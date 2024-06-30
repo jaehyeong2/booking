@@ -42,9 +42,9 @@ class ShopCouponService(
             throw AlReadyIssuedUserException()
         }
 
-        //todo qty 확인
-
         if (!coupon.issueAvailable()) throw UnAvailableCouponException()
+
+        coupon.decreaseQty()
 
         val initUserCoupon = UserShopCoupon(
             coupon = coupon,

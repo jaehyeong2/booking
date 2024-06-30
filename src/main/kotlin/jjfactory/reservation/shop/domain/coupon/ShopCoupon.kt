@@ -36,6 +36,11 @@ class ShopCoupon(
         NORMAL("일반")
     }
 
+    fun decreaseQty(){
+        if (qty <= 0) throw OutOfStockException()
+        qty--
+    }
+
     fun issueAvailable(): Boolean {
         return issueStarted
     }

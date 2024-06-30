@@ -15,6 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.transaction.annotation.Transactional
 import java.time.LocalDateTime
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.Executors
 
 
 @Transactional
@@ -36,7 +38,7 @@ class ShopCouponServiceTest {
 
     @BeforeEach
     fun tearDown(){
-        redisTemplate.opsForSet().remove(REDIS_COUPON_KEY, "1")
+        redisTemplate.delete(REDIS_COUPON_KEY)
     }
 
     @Test
@@ -99,6 +101,7 @@ class ShopCouponServiceTest {
         val userCouponId = shopCouponService.issueCouponToUser(1L, couponId = coupon.id!!)
 
         assertThat(userCouponId).isNotNull
+        assertThat(coupon.qty).isEqualTo(4)
     }
 
     @Test
@@ -133,5 +136,48 @@ class ShopCouponServiceTest {
         assertThatThrownBy {
             shopCouponService.issueCouponToUser(1L, couponId = coupon.id!!)
         }.isInstanceOf(AlReadyIssuedUserException::class.java)
+    }
+
+    @Test
+    fun `동시 과다 요청 시 테스트 실패`() {
+        //given
+        val initShop = Shop(
+            name = "shopA",
+            phone = "0101234134",
+            address = ShopAddress(
+                city = "busan",
+                street = "test"
+            ),
+            bizNum = "0123334444",
+        )
+
+        val shop = shopRepository.save(initShop)
+
+        val initCoupon = ShopCoupon(
+            name = "name",
+            shopId = shop.id!!,
+            useStartAt = LocalDateTime.now().minusDays(10),
+            useEndAt = LocalDateTime.now().plusDays(10),
+            qty = 5,
+            validSecond = 2000
+        )
+
+        val coupon = shopCouponRepository.save(initCoupon)
+        coupon.startIssue()
+
+        val executorService = Executors.newFixedThreadPool(100)
+        val countDownLatch = CountDownLatch(100)
+
+        //when
+        for (i in 1 .. 100){
+            executorService.submit{
+                shopCouponService.issueCouponToUser(i.toLong(), couponId = coupon.id!!)
+            }
+
+            countDownLatch.countDown()
+        }
+
+        countDownLatch.await()
+        assertThat(coupon.qty).isNotEqualTo(0)
     }
 }

@@ -2,6 +2,7 @@ package jjfactory.reservation.shop.domain.item
 
 import jakarta.persistence.*
 import jjfactory.reservation.shop.domain.Shop
+import java.time.LocalDate
 
 @Entity
 class ShopItem(
@@ -14,4 +15,12 @@ class ShopItem(
     @Column(columnDefinition = "TEXT")
     var description: String
 ) {
+
+    fun validateBookable(date: LocalDate){
+        if (isShopHoliday(date)) throw IllegalArgumentException("휴일에는 예약할 수 없습니다")
+    }
+
+    private fun isShopHoliday(date: LocalDate): Boolean {
+        return shop.isHoliday(date)
+    }
 }

@@ -11,6 +11,8 @@ class User(
     val firstName: String,
     val phone: String,
 
+    var token: String,
+
     var isActive: Boolean = false,
 
     @Enumerated(EnumType.STRING)

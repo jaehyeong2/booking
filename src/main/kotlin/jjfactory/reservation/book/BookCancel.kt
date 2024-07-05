@@ -10,6 +10,8 @@ class BookCancel(
 
     @OneToOne(fetch = FetchType.LAZY)
     val book: Book,
-    val canceledAt: LocalDateTime = LocalDateTime.now()
+    val canceledAt: LocalDateTime = LocalDateTime.now(),
+    @Column(columnDefinition = "TEXT")
+    val reason: String,
 ) {
 }

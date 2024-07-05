@@ -9,7 +9,5 @@ class ShopDto {
         val phone: String,
         val address: ShopAddress,
         val bizNum: String
-    ){
-
-    }
+    )
 }

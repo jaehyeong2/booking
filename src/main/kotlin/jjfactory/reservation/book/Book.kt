@@ -17,11 +17,15 @@ class Book(
     val bookEndAt: LocalDateTime,
 
     @Enumerated(EnumType.STRING)
-    val status: BookStatus = BookStatus.NORMAL,
+    var status: BookStatus = BookStatus.NORMAL,
 
     @CreationTimestamp
     val createdAt: LocalDateTime? = null,
     @UpdateTimestamp
     val updatedAt: LocalDateTime? = null
 ) {
+
+    fun cancel(){
+        status = BookStatus.CANCELED
+    }
 }

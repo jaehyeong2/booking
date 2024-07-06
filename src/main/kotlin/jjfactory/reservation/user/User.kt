@@ -11,7 +11,7 @@ class User(
     val firstName: String,
     val phone: String,
 
-    var token: String,
+    var token: String? = null,
 
     var isActive: Boolean = false,
 

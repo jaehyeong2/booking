@@ -23,7 +23,7 @@ class UserService(
         val initUser = User(
             lastName = "lee",
             firstName = "jae",
-            phone = "01012341234"
+            phone = "01012341234",
         )
 
         val user = userRepository.save(initUser)

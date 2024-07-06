@@ -4,23 +4,23 @@ import io.mockk.every
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit5.MockKExtension
-import io.mockk.just
-import io.mockk.justRun
 import io.mockk.verify
-import jjfactory.reservation.shop.manager.ShopManager
-import jjfactory.reservation.shop.manager.ShopManagerRepository
+import jjfactory.reservation.shop.application.ShopService
+import jjfactory.reservation.shop.domain.Shop
+import jjfactory.reservation.shop.domain.ShopAddress
+import jjfactory.reservation.shop.domain.ShopCommand
+import jjfactory.reservation.shop.domain.ShopManagerCommand
+import jjfactory.reservation.shop.domain.manager.ShopManager
+import jjfactory.reservation.shop.domain.manager.ShopManagerRepository
+import jjfactory.reservation.shop.infra.ShopRepository
 import jjfactory.reservation.support.MailSender
 import org.assertj.core.api.Assertions
-import org.junit.jupiter.api.Test
-
 import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
-import org.mockito.InjectMocks
-import org.mockito.Mock
-import org.mockito.junit.jupiter.MockitoExtension
 
 @ExtendWith(MockKExtension::class)
-class ShopServiceTest{
+class ShopServiceTest {
     @InjectMockKs
     lateinit var shopService: ShopService
 
@@ -60,6 +60,7 @@ class ShopServiceTest{
         }.isInstanceOf(IllegalArgumentException::class.java)
 
     }
+
     @Test
     fun `shop 등록 성공`() {
         val command = ShopCommand.Create(

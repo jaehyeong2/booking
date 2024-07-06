@@ -7,4 +7,8 @@ class PushNotificatorImpl : PushNotificator {
     override fun sendBookCancelNotification(token: String) {
         TODO("Not yet implemented")
     }
+
+    override fun sendBookingNotification(token: String) {
+        TODO("Not yet implemented")
+    }
 }

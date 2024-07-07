@@ -1,4 +1,4 @@
-package jjfactory.reservation.book
+package jjfactory.reservation.book.domain
 
 import jakarta.persistence.*
 import java.time.LocalDateTime

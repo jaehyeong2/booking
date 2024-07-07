@@ -1,5 +1,7 @@
-package jjfactory.reservation.book
+package jjfactory.reservation.book.domain
 
+import jjfactory.reservation.book.BookCancelRepository
+import jjfactory.reservation.book.BookRepository
 import jjfactory.reservation.shop.infra.ShopItemRepository
 import jjfactory.reservation.support.PushNotificator
 import jjfactory.reservation.user.UserRepository
@@ -20,6 +22,12 @@ class BookService(
 ) {
 
 
+    fun getBookDetail(bookId: Long){
+        val book = bookRepository.findByIdOrNull(bookId) ?: throw NotFoundException()
+
+
+    }
+
     fun booking(loginUserId: Long, itemId: Long, bookStartAt: LocalDateTime, bookEndAt: LocalDateTime): Long {
         val item = shopItemRepository.findByIdOrNull(itemId) ?: throw NotFoundException()
         val user = userRepository.findByIdOrNull(loginUserId) ?: throw NotFoundException()
@@ -35,7 +43,9 @@ class BookService(
 
         val book = bookRepository.save(initBook)
 
-        pushNotificator.sendBookingNotification(user.token)
+        user.token?.let {
+            pushNotificator.sendBookingNotification(it)
+        }
 
         return book.id!!
     }
@@ -58,7 +68,9 @@ class BookService(
 
         //todo 결제 되엇다면? (선 결제 / 후불결제)
 
-        pushNotificator.sendBookCancelNotification(user.token)
+        user.token?.let {
+            pushNotificator.sendBookCancelNotification(it)
+        }
     }
 
 }

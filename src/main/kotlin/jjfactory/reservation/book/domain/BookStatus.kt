@@ -1,4 +1,4 @@
-package jjfactory.reservation.book
+package jjfactory.reservation.book.domain
 
 enum class BookStatus {
     NORMAL, CANCELED

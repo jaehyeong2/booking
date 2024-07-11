@@ -1,10 +1,9 @@
 package jjfactory.reservation.user
 
-import org.assertj.core.api.Assertions
+import jjfactory.reservation.domain.user.Grade
+import jjfactory.reservation.domain.user.User
 import org.assertj.core.api.Assertions.*
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import kotlin.math.E
 
 class UserTest{
 

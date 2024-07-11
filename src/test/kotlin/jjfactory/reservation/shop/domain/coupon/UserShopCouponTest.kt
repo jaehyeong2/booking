@@ -1,5 +1,9 @@
 package jjfactory.reservation.shop.domain.coupon
 
+import jjfactory.reservation.domain.shop.coupon.AlreadyUsedCouponException
+import jjfactory.reservation.domain.shop.coupon.ExpiredCouponException
+import jjfactory.reservation.domain.shop.coupon.ShopCoupon
+import jjfactory.reservation.domain.shop.coupon.UserShopCoupon
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test

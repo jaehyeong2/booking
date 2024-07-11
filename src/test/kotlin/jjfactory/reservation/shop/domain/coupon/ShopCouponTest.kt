@@ -1,5 +1,7 @@
 package jjfactory.reservation.shop.domain.coupon
 
+import jjfactory.reservation.domain.shop.coupon.OutOfStockException
+import jjfactory.reservation.domain.shop.coupon.ShopCoupon
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test

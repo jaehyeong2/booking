@@ -1,11 +1,14 @@
 package jjfactory.reservation.shop.domain.coupon
 
-import jjfactory.reservation.shop.domain.Shop
-import jjfactory.reservation.shop.domain.ShopAddress
-import jjfactory.reservation.shop.infra.ShopCouponRepository
-import jjfactory.reservation.shop.infra.ShopRepository
-import jjfactory.reservation.user.User
-import jjfactory.reservation.user.UserRepository
+import jjfactory.reservation.domain.shop.Shop
+import jjfactory.reservation.domain.shop.ShopAddress
+import jjfactory.reservation.domain.shop.coupon.AlReadyIssuedUserException
+import jjfactory.reservation.domain.shop.coupon.ShopCoupon
+import jjfactory.reservation.domain.shop.coupon.ShopCouponService
+import jjfactory.reservation.domain.shop.coupon.UnAvailableCouponException
+import jjfactory.reservation.repository.shop.ShopCouponRepository
+import jjfactory.reservation.repository.shop.ShopRepository
+import jjfactory.reservation.repository.UserRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.BeforeEach

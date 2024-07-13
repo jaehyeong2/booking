@@ -15,6 +15,8 @@ class User(
 
     var isActive: Boolean = false,
 
+    var withdraw: Boolean = false,
+
     @Enumerated(EnumType.STRING)
     var grade: Grade = Grade.E
 ) {
@@ -33,5 +35,9 @@ class User(
 
     fun activate() {
         isActive = true
+    }
+
+    fun withdraw(){
+        withdraw = true
     }
 }
